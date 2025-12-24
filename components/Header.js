@@ -2,6 +2,7 @@ export default function Header({ profile }) {
   const nav = [
     { href: '#about', label: 'About' },
     { href: '#experience', label: 'Experience' },
+    { href: '#achievements', label: 'Achievements' },
     { href: '#projects', label: 'Projects' },
     { href: '#skills', label: 'Skills' },
     { href: '#certifications', label: 'Certifications' },
@@ -35,7 +36,7 @@ export default function Header({ profile }) {
 
         <div className="flex items-center gap-2">
           <a
-            href={`mailto:${profile.email}`}
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`}
             className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-3 py-2 text-sm text-neutral-200 hover:bg-neutral-900"
           >
             Email

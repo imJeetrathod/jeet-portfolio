@@ -1,3 +1,5 @@
+import './globals.css';
+
 export const metadata = {
   title: 'Jeet Rathod | Salesforce Developer',
   description: 'Portfolio of Jeet Rathod — Salesforce Developer',

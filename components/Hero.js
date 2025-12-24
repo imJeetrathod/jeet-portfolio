@@ -42,14 +42,23 @@ export default function Hero({ profile }) {
               </div>
               <div className="flex items-center justify-between gap-3">
                 <span className="text-neutral-400">Email</span>
-                <a className="text-neutral-200 hover:underline" href={`mailto:${profile.email}`}>
+                <a className="text-neutral-200 hover:underline" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`}>
                   {profile.email}
                 </a>
               </div>
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-neutral-400">LinkedIn</span>
+                <a className="text-neutral-200 hover:underline" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">
+                  View Profile
+                </a>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-neutral-400">Trailhead</span>
+                <a className="text-neutral-200 hover:underline" href={profile.links.trailhead} target="_blank" rel="noopener noreferrer">
+                  View Profile
+                </a>
+              </div>
             </div>
-            <p className="mt-4 text-xs text-neutral-500">
-              Add your LinkedIn / Trailhead links in code and I’ll render them here.
-            </p>
           </div>
         </div>
       </div>
