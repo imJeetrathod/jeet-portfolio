@@ -1,8 +1,12 @@
 'use client';
 
+import { useInView } from '../hooks/useInView';
+
 export default function ContactSection({ profile }) {
+  const [ref, isInView] = useInView();
+
   return (
-    <section id="contact" className="mx-auto w-full max-w-6xl px-5 pb-16">
+    <section ref={ref} id="contact" className={`mx-auto w-full max-w-6xl px-5 pb-16 ${isInView ? 'animate-fade-in-up' : ''}`}>
       <div className="mb-8">
         <h2 className="text-2xl font-semibold text-neutral-100">Contact</h2>
       </div>

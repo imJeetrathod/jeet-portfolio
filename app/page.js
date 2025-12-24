@@ -81,16 +81,16 @@ const certifications = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen animate-fade-in-blur">
       <Header profile={profile} />
       <Hero profile={profile} />
 
       <div className="mx-auto w-full max-w-6xl px-5 pb-16">
-        <Section id="about" title="About">
+        <Section id="about" title="About" className="animate-fade-in-up">
           <p className="text-neutral-300 leading-relaxed">{profile.summary}</p>
         </Section>
 
-        <Section id="experience" title="Experience">
+        <Section id="experience" title="Experience" className="animate-fade-in-up">
           <div className="grid gap-4">
             {experience.map((item) => (
               <div key={item.company} className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 shadow-soft">
@@ -111,7 +111,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section id="achievements" title="Achievements">
+        <Section id="achievements" title="Achievements" className="animate-fade-in-up">
           <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 shadow-soft">
             <ul className="space-y-3 text-neutral-300">
               <li className="flex items-start gap-3">
@@ -133,7 +133,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section id="projects" title="Projects">
+        <Section id="projects" title="Projects" className="animate-fade-in-up">
           <div className="grid gap-4 md:grid-cols-2">
             {projects.map((p) => (
               <ProjectCard key={p.title} {...p} />
@@ -141,7 +141,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section id="skills" title="Skills">
+        <Section id="skills" title="Skills" className="animate-fade-in-up">
           <div className="flex flex-wrap gap-2">
             {skills.map((s) => (
               <span key={s} className="rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1 text-sm text-neutral-200">
@@ -151,7 +151,7 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section id="certifications" title="Certifications">
+        <Section id="certifications" title="Certifications" className="animate-fade-in-up">
           <ul className="grid gap-2 text-neutral-300">
             {certifications.map((c) => (
               <li key={c} className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-4">

@@ -6,6 +6,10 @@
   color-scheme: dark;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   height: 100%;
 }
@@ -18,8 +22,46 @@ body {
   @apply bg-neutral-700 text-neutral-50;
 }
 
-/* Smooth focus */
-:focus-visible {
-  outline: 2px solid rgba(255,255,255,0.35);
-  outline-offset: 4px;
+/* For future images, use Next.js Image component with lazy loading:
+import Image from 'next/image'
+<Image src="/image.jpg" alt="Description" width={500} height={300} loading="lazy" />
+*/
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+@keyframes fadeInBlur {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.animate-fade-in-blur {
+  animation: fadeInBlur 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, filter;
+}
+
+/* Stagger animations */
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-500 { animation-delay: 0.5s; }

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Header({ profile }) {
   const nav = [
     { href: '#about', label: 'About' },
@@ -13,8 +15,15 @@ export default function Header({ profile }) {
     <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-3">
         <a href="#" className="group flex items-center gap-3">
-          <div className="h-9 w-9 rounded-xl bg-neutral-900 border border-neutral-800 grid place-items-center">
-            <span className="text-sm font-bold">JR</span>
+          <div className="h-9 w-9 rounded-xl bg-neutral-900 border border-neutral-800 overflow-hidden">
+            <Image
+              src="/profile.jpg"
+              alt="Jeet Rathod"
+              width={36}
+              height={36}
+              className="h-full w-full object-cover"
+              priority
+            />
           </div>
           <div className="leading-tight">
             <div className="text-sm font-semibold">{profile.name}</div>

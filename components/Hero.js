@@ -1,6 +1,12 @@
+'use client';
+
+import { useInView } from '../hooks/useInView';
+
 export default function Hero({ profile }) {
+  const [ref, isInView] = useInView();
+
   return (
-    <section className="mx-auto w-full max-w-6xl px-5 pt-12 pb-10">
+    <section ref={ref} className={`mx-auto w-full max-w-6xl px-5 pt-12 pb-10 ${isInView ? 'animate-fade-in-up' : ''}`}>
       <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-6 shadow-soft md:p-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
