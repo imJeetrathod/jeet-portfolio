@@ -1,4 +1,4 @@
-# Jeet Portfolio (Next.js + Tailwind)
+# Jeet Portfolio
 
 Dark-theme portfolio built from your resume.
 
