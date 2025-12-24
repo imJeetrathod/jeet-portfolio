@@ -12,12 +12,12 @@ export function useInView(options = {}) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
           setIsInView(true);
           observer.disconnect(); // Only trigger once
         }
       },
-      { threshold: 0.1, ...options }
+      { threshold: [0.2, 0.3, 0.4, 0.5], ...options }
     );
 
     observer.observe(element);
