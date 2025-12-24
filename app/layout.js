@@ -4,9 +4,9 @@ export const metadata = {
   title: 'Jeet Rathod | Salesforce Developer',
   description: 'Portfolio of Jeet Rathod — Salesforce Developer',
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/apple-touch-icon.png',
+    icon: '/profile.jpg',
+    shortcut: '/profile.jpg',
+    apple: '/profile.jpg',
   },
 };
 
