@@ -1,6 +1,11 @@
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Header({ profile }) {
+  const [copied, setCopied] = useState(false);
+
   const nav = [
     { href: '#about', label: 'About' },
     { href: '#experience', label: 'Experience' },
@@ -10,6 +15,16 @@ export default function Header({ profile }) {
     { href: '#certifications', label: 'Certifications' },
     { href: '#contact', label: 'Contact' },
   ];
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (e) {
+      console.error('Copy failed', e);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur">
@@ -44,12 +59,12 @@ export default function Header({ profile }) {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`}
-            className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-3 py-2 text-sm text-neutral-200 hover:bg-neutral-900"
+          <button
+            onClick={copyEmail}
+            className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-3 py-2 text-sm text-neutral-200 hover:bg-neutral-900 transition"
           >
-            Email
-          </a>
+            {copied ? 'Copied!' : 'Copy Email'}
+          </button>
         </div>
       </div>
     </header>

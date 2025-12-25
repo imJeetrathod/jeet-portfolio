@@ -11,7 +11,7 @@ export default function ProjectsSection() {
     },
     {
       title: 'Digital Signature',
-      subtitle: 'Emsigner Integration',
+      subtitle: 'LWC + Agentforce Solution',
       description:
         'Integrated digital signature flows with secure document validation, user verification, and real-time data sync between Salesforce and external systems.',
       tags: ['Integration', 'REST APIs', 'Security'],
@@ -21,7 +21,7 @@ export default function ProjectsSection() {
       subtitle: 'Agentforce Developer (Company Website Bot)',
       description:
         'Developed an AI-powered chatbot using Agentforce to improve how customers interact with the company website. The solution allows users to ask questions, explore services, schedule meetings, and generate leads directly through chat. Built custom actions using Flows and API integrations to automate meeting scheduling, send email invitations, and capture lead information in real time.',
-      tags: ['Agentforce', 'AI', 'Flows', 'API Integrations'],
+      tags: ['Agentforce', 'AI', 'Flows', 'Apex' ],
     },
     {
       title: 'Healthcare Solutions',

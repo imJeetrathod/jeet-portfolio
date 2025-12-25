@@ -15,7 +15,7 @@ export default function Hero({ profile }) {
               {profile.title}
             </h1>
             <p className="mt-4 max-w-2xl text-neutral-300 leading-relaxed">
-              I build reliable Salesforce solutions—clean UI with LWC, scalable Apex, and automation that makes teams faster.
+              I build reliable Salesforce solutions with LWC, Apex, and automation that makes teams faster.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
