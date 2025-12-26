@@ -14,8 +14,6 @@ export default function Hero() {
 
   const titles = [
     'Salesforce Developer',
-    'Apex & LWC Specialist',
-    'Agentforce Specialist',
     'Automation Enthusiast',
     'Trailhead Ranger',
     '3x Certified',
