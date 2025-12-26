@@ -15,7 +15,10 @@ export default function Footer() {
               LinkedIn →
             </a>
           </div>
-          <p className="text-sm text-neutral-400">© {year} Jeet Rathod</p>
+         <p className="hidden md:block text-sm text-neutral-400">
+  © {year} Jeet Rathod
+</p>
+
         </div>
       </div>
     </footer>

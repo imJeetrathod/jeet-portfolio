@@ -16,12 +16,12 @@ export default function ContactSection({ profile }) {
           <a className="hover:underline" href={`tel:${profile.phone.replace(/\s/g,'')}`}>{profile.phone}</a>
         </div>
         <div className="mt-6">
-          <label htmlFor="message" className="block text-sm font-medium text-neutral-300 mb-2">Send me a message</label>
+          {/* <label htmlFor="message" className="block text-sm font-medium text-neutral-300 mb-2">Send me a message</label> */}
           <textarea
             id="message"
-            rows="4"
+            rows="6"
             className="block w-full rounded-md border border-neutral-700 bg-neutral-800 px-3 py-2 text-neutral-100 placeholder-neutral-500 focus:border-neutral-500 focus:outline-none mb-4"
-            placeholder="Your message here..."
+            placeholder="Send me your message here..."
           ></textarea>
           <button
             onClick={() => {

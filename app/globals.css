@@ -63,3 +63,16 @@ import Image from 'next/image'
 .animate-delay-200 { animation-delay: 0.2s; }
 .animate-delay-300 { animation-delay: 0.3s; }
 .animate-delay-500 { animation-delay: 0.5s; }
+
+@keyframes text-shine {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.animate-text-shine {
+  animation: text-shine 3s ease-in-out infinite;
+}
