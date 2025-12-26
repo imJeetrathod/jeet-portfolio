@@ -13,8 +13,31 @@ export default function Header({ profile }) {
     { href: '#contact', label: 'Contact' },
   ];
 
- const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}&su=Regarding%20Collaboration%20/%20Opportunity&body=Hi,%0A%0AI came across your portfolio and would love to connect.%0A%0AThanks.`;
+  const openGmail = () => {
+    const email = profile.email;
+    const subject = encodeURIComponent('Regarding Collaboration / Opportunity');
+    const body = encodeURIComponent(
+      'Hi,\n\nI came across your portfolio and would love to connect.\n\nThanks.'
+    );
 
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // Try opening Gmail app
+      window.location.href = `googlegmail://co?to=${email}&subject=${subject}&body=${body}`;
+
+      // Fallback to mailto if Gmail app is not installed
+      setTimeout(() => {
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+      }, 500);
+    } else {
+      // Desktop → Gmail Web
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`,
+        '_blank'
+      );
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur">
@@ -49,14 +72,12 @@ export default function Header({ profile }) {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href={gmailLink}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={openGmail}
             className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-3 py-2 text-sm text-neutral-200 hover:bg-neutral-900 transition"
           >
             Send Message
-          </a>
+          </button>
         </div>
       </div>
     </header>
