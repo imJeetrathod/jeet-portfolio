@@ -14,7 +14,7 @@ export default function Hero() {
 
   const titles = [
     'Salesforce Developer',
-    'Apex, LWC & Platform Engineer',
+    'Apex & LWC Specialist',
     'Agentforce Specialist',
     'Automation Enthusiast',
     'Trailhead Ranger',
@@ -61,13 +61,16 @@ export default function Hero() {
 
             {/* TITLE */}
             <div
-              onClick={handleTitleClick}
-              className="
-                relative mt-2 h-[3.2rem] md:h-[4rem]
-                overflow-hidden cursor-pointer select-none
-                text-3xl md:text-5xl font-semibold tracking-tight
-              "
-            >
+  onClick={handleTitleClick}
+  className="
+    relative mt-2
+    h-[2.8rem] md:h-[4.5rem]
+    overflow-hidden cursor-pointer select-none
+    text-2xl md:text-5xl font-semibold tracking-tight
+    whitespace-nowrap md:whitespace-normal
+  "
+>
+
               <div
                 className={`absolute inset-0 ${
                   isAnimating ? 'title-wrapper-animate' : ''
@@ -173,14 +176,16 @@ export default function Hero() {
           transition: transform 0.6s ease;
         }
 
-        .title-item {
-          height: 100%;
-          display: flex;
-          align-items: center;
-          font-size: inherit;
-          font-weight: inherit;
-          line-height: 1.1;
-        }
+.title-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.2; /* safer for animation */
+  white-space: inherit;
+}
+
       `}</style>
     </section>
   );
