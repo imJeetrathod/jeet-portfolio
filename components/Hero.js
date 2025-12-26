@@ -23,7 +23,7 @@ export default function Hero() {
   ];
 
   const profile = {
-    location: 'Ahmedabad, Gujarat, IN',
+    location: 'Ahmedabad, Gujarat, India',
     name: 'Jeet Rathod',
     phone: '+91 91066 04262',
     email: 'work.jeetrathod@gmail.com',
@@ -49,32 +49,50 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className={`mx-auto w-full max-w-6xl px-5 pt-12 pb-10 ${
-        isInView ? 'animate-fade-in-up' : ''
-      }`}
+      className={`mx-auto w-full max-w-6xl px-5 pt-12 pb-10 ${isInView ? 'animate-fade-in-up' : ''
+        }`}
     >
-      <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-6 shadow-soft md:p-10">
+      {/* MAIN CARD */}
+      <div
+        className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-6 shadow-soft md:p-10"
+        style={{
+          /* 🎛 TITLE SIZE CONTROLS */
+          '--title-font-mobile': '2rem',   // 📱 change mobile title size here
+          '--title-font-desktop': '3.25rem',  // 💻 change laptop title size here
+        }}
+      >
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           {/* LEFT */}
           <div>
-            <div className="text-sm text-neutral-400">{profile.location}</div>
+            {/* LOCATION */}
+            <div className="flex items-center gap-2 text-sm text-neutral-400">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                className="text-neutral-400"
+              >
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+              </svg>
+              <span>{profile.location}</span>
+            </div>
 
             {/* TITLE */}
             <div
-  onClick={handleTitleClick}
-  className="
-    relative mt-2
-    h-[2.8rem] md:h-[4.5rem]
-    overflow-hidden cursor-pointer select-none
-    text-2xl md:text-5xl font-semibold tracking-tight
-    whitespace-nowrap md:whitespace-normal
-  "
->
-
+              onClick={handleTitleClick}
+              className="
+                relative mt-2
+                h-[2.8rem] md:h-[4.5rem]
+                overflow-hidden cursor-pointer select-none
+                font-semibold tracking-tight
+                whitespace-nowrap md:whitespace-normal
+              "
+            >
               <div
-                className={`absolute inset-0 ${
-                  isAnimating ? 'title-wrapper-animate' : ''
-                }`}
+                className={`absolute inset-0 ${isAnimating ? 'title-wrapper-animate' : ''
+                  }`}
               >
                 <h1 className="title-item">
                   {titles[currentTitleIndex]}
@@ -86,11 +104,13 @@ export default function Hero() {
               </div>
             </div>
 
+            {/* DESCRIPTION */}
             <p className="mt-4 max-w-2xl text-neutral-300 leading-relaxed">
               I build reliable Salesforce solutions with LWC, Apex, and automation
               that makes teams faster.
             </p>
 
+            {/* ACTIONS */}
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="#projects"
@@ -169,23 +189,28 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* TITLE ANIMATION */}
+      {/* TITLE ANIMATION + SIZE CONTROL */}
       <style jsx>{`
         .title-wrapper-animate {
           transform: translateY(-100%);
           transition: transform 0.6s ease;
         }
 
-.title-item {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: 1.2; /* safer for animation */
-  white-space: inherit;
-}
+        .title-item {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          font-size: var(--title-font-mobile);
+          font-weight: inherit;
+          line-height: 1.2;
+          white-space: inherit;
+        }
 
+        @media (min-width: 768px) {
+          .title-item {
+            font-size: var(--title-font-desktop);
+          }
+        }
       `}</style>
     </section>
   );
