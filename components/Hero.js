@@ -1,9 +1,47 @@
 'use client';
 
-import { useInView } from '../hooks/useInView';
+import { useState } from 'react';
 
-export default function Hero({ profile }) {
+// Mock hook for demonstration
+const useInView = () => {
+  return [null, true];
+};
+
+export default function Hero() {
   const [ref, isInView] = useInView();
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+const titles = [
+  'Salesforce Developer',
+  'Apex, LWC & Platform Engineer',
+  'Agentforce Specialist',
+  'Automation Enthusiast',
+  'Trailhead Ranger',
+];
+
+
+  const profile = {
+    location: 'Ahmedabad, Gujarat, IN',
+    name: 'Jeet Rathod',
+    phone: '+91 91066 04262',
+    email: 'work.jeetrathod@gmail.com',
+    links: {
+      linkedin: 'https://linkedin.com/in/hi-jeet-rathod',
+      trailhead: 'https://www.salesforce.com/trailblazer/imjeetrathod'
+    }
+  };
+
+  const handleTitleClick = () => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
+    setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
+    
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 600);
+  };
 
   return (
     <section ref={ref} className={`mx-auto w-full max-w-6xl px-5 pt-12 pb-10 ${isInView ? 'animate-fade-in-up' : ''}`}>
@@ -11,8 +49,16 @@ export default function Hero({ profile }) {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="text-sm text-neutral-400">{profile.location}</div>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight md:text-5xl">
-              {profile.title}
+            <h1 
+              onClick={handleTitleClick}
+              className={`mt-2 text-3xl font-semibold tracking-tight md:text-5xl cursor-pointer select-none transition-all duration-300 hover:text-neutral-200 ${
+                isAnimating ? 'animate-title-change' : ''
+              }`}
+              style={{
+                animation: isAnimating ? 'titleChange 0.6s ease-in-out' : 'none'
+              }}
+            >
+              {titles[currentTitleIndex]}
             </h1>
             <p className="mt-4 max-w-2xl text-neutral-300 leading-relaxed">
               I build reliable Salesforce solutions with LWC, Apex, and automation that makes teams faster.
@@ -68,6 +114,20 @@ export default function Hero({ profile }) {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes titleChange {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      `}</style>
     </section>
   );
 }
