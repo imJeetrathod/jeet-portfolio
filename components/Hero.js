@@ -12,14 +12,15 @@ export default function Hero() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-const titles = [
-  'Salesforce Developer',
-  'Apex, LWC & Platform Engineer',
-  'Agentforce Specialist',
-  'Automation Enthusiast',
-  'Trailhead Ranger',
-];
-
+  const titles = [
+    'Salesforce Developer',
+    'Apex, LWC & Platform Engineer',
+    'Agentforce Specialist',
+    'Automation Enthusiast',
+    'Trailhead Ranger',
+    '3x Certified',
+    '#TDX25 Winner',
+  ];
 
   const profile = {
     location: 'Ahmedabad, Gujarat, IN',
@@ -28,41 +29,65 @@ const titles = [
     email: 'work.jeetrathod@gmail.com',
     links: {
       linkedin: 'https://linkedin.com/in/hi-jeet-rathod',
-      trailhead: 'https://www.salesforce.com/trailblazer/imjeetrathod'
-    }
+      trailhead: 'https://www.salesforce.com/trailblazer/imjeetrathod',
+    },
   };
+
+  const nextIndex = (currentTitleIndex + 1) % titles.length;
 
   const handleTitleClick = () => {
     if (isAnimating) return;
-    
+
     setIsAnimating(true);
-    setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
-    
+
     setTimeout(() => {
+      setCurrentTitleIndex(nextIndex);
       setIsAnimating(false);
     }, 600);
   };
 
   return (
-    <section ref={ref} className={`mx-auto w-full max-w-6xl px-5 pt-12 pb-10 ${isInView ? 'animate-fade-in-up' : ''}`}>
+    <section
+      ref={ref}
+      className={`mx-auto w-full max-w-6xl px-5 pt-12 pb-10 ${
+        isInView ? 'animate-fade-in-up' : ''
+      }`}
+    >
       <div className="rounded-3xl border border-neutral-800 bg-neutral-900/40 p-6 shadow-soft md:p-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          {/* LEFT */}
           <div>
             <div className="text-sm text-neutral-400">{profile.location}</div>
-            <h1 
+
+            {/* TITLE */}
+            <div
               onClick={handleTitleClick}
-              className={`mt-2 text-3xl font-semibold tracking-tight md:text-5xl cursor-pointer select-none transition-all duration-300 hover:text-neutral-200 ${
-                isAnimating ? 'animate-title-change' : ''
-              }`}
-              style={{
-                animation: isAnimating ? 'titleChange 0.6s ease-in-out' : 'none'
-              }}
+              className="
+                relative mt-2 h-[3.2rem] md:h-[4rem]
+                overflow-hidden cursor-pointer select-none
+                text-3xl md:text-5xl font-semibold tracking-tight
+              "
             >
-              {titles[currentTitleIndex]}
-            </h1>
+              <div
+                className={`absolute inset-0 ${
+                  isAnimating ? 'title-wrapper-animate' : ''
+                }`}
+              >
+                <h1 className="title-item">
+                  {titles[currentTitleIndex]}
+                </h1>
+
+                <h1 className="title-item">
+                  {titles[nextIndex]}
+                </h1>
+              </div>
+            </div>
+
             <p className="mt-4 max-w-2xl text-neutral-300 leading-relaxed">
-              I build reliable Salesforce solutions with LWC, Apex, and automation that makes teams faster.
+              I build reliable Salesforce solutions with LWC, Apex, and automation
+              that makes teams faster.
             </p>
+
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="#projects"
@@ -79,34 +104,60 @@ const titles = [
             </div>
           </div>
 
+          {/* RIGHT – QUICK INFO */}
           <div className="rounded-2xl border border-neutral-800 bg-neutral-950/40 p-4 md:min-w-[320px]">
-            <div className="text-xs uppercase tracking-widest text-neutral-400">Quick Info</div>
+            <div className="text-xs uppercase tracking-widest text-neutral-400">
+              Quick Info
+            </div>
+
             <div className="mt-3 grid gap-2 text-sm">
               <div className="flex items-center justify-between gap-3">
                 <span className="text-neutral-400">Name</span>
                 <span className="text-neutral-200">{profile.name}</span>
               </div>
+
               <div className="flex items-center justify-between gap-3">
                 <span className="text-neutral-400">Phone</span>
-                <a className="text-neutral-200 hover:underline" href={`tel:${profile.phone.replace(/\s/g, '')}`}>
+                <a
+                  className="text-neutral-200 hover:underline"
+                  href={`tel:${profile.phone.replace(/\s/g, '')}`}
+                >
                   {profile.phone}
                 </a>
               </div>
+
               <div className="flex items-center justify-between gap-3">
                 <span className="text-neutral-400">Email</span>
-                <a className="text-neutral-200 hover:underline" href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`}>
+                <a
+                  className="text-neutral-200 hover:underline"
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {profile.email}
                 </a>
               </div>
+
               <div className="flex items-center justify-between gap-3">
                 <span className="text-neutral-400">LinkedIn</span>
-                <a className="text-neutral-200 hover:underline" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">
+                <a
+                  className="text-neutral-200 hover:underline"
+                  href={profile.links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   View Profile
                 </a>
               </div>
+
               <div className="flex items-center justify-between gap-3">
                 <span className="text-neutral-400">Trailhead</span>
-                <a className="text-neutral-200 hover:underline" href={profile.links.trailhead} target="_blank" rel="noopener noreferrer">
+                <a
+                  className="text-neutral-200 hover:underline"
+                  href={profile.links.trailhead}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   View Profile
                 </a>
               </div>
@@ -115,17 +166,20 @@ const titles = [
         </div>
       </div>
 
+      {/* TITLE ANIMATION */}
       <style jsx>{`
-        @keyframes titleChange {
-          0% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
+        .title-wrapper-animate {
+          transform: translateY(-100%);
+          transition: transform 0.6s ease;
+        }
+
+        .title-item {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          font-size: inherit;
+          font-weight: inherit;
+          line-height: 1.1;
         }
       `}</style>
     </section>
