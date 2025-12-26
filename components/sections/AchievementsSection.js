@@ -10,7 +10,7 @@ export default function AchievementsSection() {
 
         '--desc-base-color': '163, 163, 163',      // neutral-400
         '--desc-base-opacity': 0.65,
-        '--desc-shine-color': '251, 191, 36',      // amber-400
+        '--desc-shine-color': '255, 255, 255',    // amber-400
         '--desc-shine-opacity': 0.9,
       }}
     >
@@ -72,7 +72,7 @@ export default function AchievementsSection() {
               href="https://www.linkedin.com/posts/hi-jeet-rathod_tdx-slack-agentforce-activity-7325937216755527680-dqB2"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-amber-400 hover:text-amber-300 underline underline-offset-4"
+              className="text-sm text-amber-400 hover:text-amber-300 no-underline"
             >
               View LinkedIn Post →
             </a>
@@ -81,7 +81,7 @@ export default function AchievementsSection() {
               href="https://www.salesforce.com/in/news/stories/agentforce-hackathon-tdx-ai-innovation/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-amber-400 hover:text-amber-300 underline underline-offset-4"
+              className="text-sm text-amber-400 hover:text-amber-300 no-underline"
             >
               Featured on Salesforce →
             </a>
