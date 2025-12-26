@@ -1,11 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
 
 export default function Header({ profile }) {
-  const [copied, setCopied] = useState(false);
-
   const nav = [
     { href: '#about', label: 'About' },
     { href: '#experience', label: 'Experience' },
@@ -16,15 +13,8 @@ export default function Header({ profile }) {
     { href: '#contact', label: 'Contact' },
   ];
 
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(profile.email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch (e) {
-      console.error('Copy failed', e);
-    }
-  };
+ const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}&su=Regarding%20Collaboration%20/%20Opportunity&body=Hi,%0A%0AI came across your portfolio and would love to connect.%0A%0AThanks.`;
+
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur">
@@ -59,12 +49,14 @@ export default function Header({ profile }) {
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
-            onClick={copyEmail}
+          <a
+            href={gmailLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-3 py-2 text-sm text-neutral-200 hover:bg-neutral-900 transition"
           >
-            {copied ? 'Copied!' : 'Copy Email'}
-          </button>
+            Send Message
+          </a>
         </div>
       </div>
     </header>
