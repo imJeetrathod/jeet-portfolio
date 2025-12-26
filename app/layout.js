@@ -66,6 +66,10 @@ export const metadata = {
     shortcut: '/profile.jpg',
     apple: '/profile.jpg',
   },
+  // ✅ Google Search Console verification
+  verification: {
+    google: 'PhvfcsJ1nn0gKhe7hCEZ_9metsYUtNLDp9YWER5izdU',
+  },
 };
 
 export default function RootLayout({ children }) {
